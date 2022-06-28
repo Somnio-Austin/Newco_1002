@@ -146,8 +146,8 @@ $(document).ready(function() {
     });
 });
 $(window).on('load', function() {
-
-    var elem = $('#' + window.location.hash.replace('#', ''));
+    if ( window.location.hash )
+      var elem = $('#' + window.location.hash.replace('#', ''));
     var navHeight = 100 + $('.jump-nav').outerHeight() - 2;
     if ( $(window).width() < 992 )
       navHeight = 100 + $('.mobile-jump-nav').outerHeight();
