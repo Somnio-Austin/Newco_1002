@@ -106,11 +106,18 @@ $('.mobile-jump-nav .mobile-jump-links-overview').click(function(e) {
 
 
 $(function() {
-    $('a[data-modal]').on('click', function() {
+    $('a[data-modal]').on('click', function(e) {
+      e.preventDefault();
+      var that = $(this);
         $($(this).data('modal')).modal({
         fadeDuration: 250
     });
-        return false;
+        setTimeout( function() {$(that.data('modal')).focus();}, 300);
+        //return false;
+    });
+    $('body').on('click', '.close-modal', function(e) {
+      console.log('a[data-modal="#'+$(this).parents('.modal').attr('id')+'"]');
+      $('a[data-modal="#'+$(this).parents('.modal').attr('id')+'"]').focus();
     });
 });
 
@@ -125,10 +132,8 @@ window.onbeforeunload = function () {
 }
 $(document).ready(function() {
 
-
-    $('body').on('click', '.jump-nav a', function(e) {
-            e.preventDefault(); // prevent hard jump, the default behavior
-
+    $('body').on('click', '.jump-nav a, .skipto', function(e) {
+            //e.preventDefault(); // prevent hard jump, the default behavior
             var navHeight = 100 + $('.jump-nav').outerHeight() - 2;
             if ( $(window).width() < 992 )
               navHeight = 100 + $('.mobile-jump-nav').outerHeight();
@@ -139,7 +144,7 @@ $(document).ready(function() {
             $('html, body').stop().animate({
                     scrollTop: $(target).offset().top - navHeight
             }, 600, "swing", function() {
-                    location.hash = target; //attach the hash (#jumptarget) to the pageurl
+                    //location.hash = target; //attach the hash (#jumptarget) to the pageurl
             });
 
             return false;

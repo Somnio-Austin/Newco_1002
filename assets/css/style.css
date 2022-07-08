@@ -29,6 +29,18 @@ header * {margin: 0; padding: 0; border: 0; font-size: 100%; }
 .image .cmp-image {margin: 0px !important; }
 
 body {margin: 0px; color: #20201F; font-family: AllianceNo1, Arial, Helvetica, sans-serif; overflow-x: hidden; }
+
+.skipto {
+  position: absolute;
+  top: -9999999px;
+  left: 15px;
+  color: #20201F;
+  z-index: 99999999999;
+}
+
+.skipto:focus {
+  top: 15px;
+}
 img {max-width: 100%; }
 a {text-decoration: none; }
 h1 {font-weight: 300; font-size: 64px; line-height: 77px; margin-top: 0px; font-family: SourceSerif4, Arial, Helvetica, sans-serif; }
